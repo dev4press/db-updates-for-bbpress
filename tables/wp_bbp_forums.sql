@@ -13,10 +13,10 @@ CREATE TABLE `wp_bbp_forums` (
   `reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `reply_count_hidden` INT UNSIGNED NOT NULL DEFAULT 0,
   `total_reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
-  INDEX `forum_id` (`forum_id` ASC),
-  INDEX `forum_type` (`forum_type` ASC),
-  INDEX `last_topic_id` (`last_topic_id` ASC),
-  INDEX `last_reply_id` (`last_reply_id` ASC),
-  INDEX `last_active_id` (`last_active_id` ASC),
-  INDEX `status` (`status` ASC))
+  INDEX `forum_id` (`forum_id`),
+  INDEX `forum_type` (`forum_type`),
+  INDEX `last_topic_id` (`last_topic_id`),
+  INDEX `last_reply_id` (`last_reply_id`),
+  INDEX `last_active_id` (`last_active_id`),
+  INDEX `status` (`status`))
 ENGINE = InnoDB;
