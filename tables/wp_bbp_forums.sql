@@ -10,7 +10,7 @@ CREATE TABLE `wp_bbp_forums` (
   `last_topic_id` BIGINT UNSIGNED NOT NULL DEFAULT 0,
   `last_reply_id` BIGINT UNSIGNED NOT NULL DEFAULT 0,
   `last_active_id` BIGINT UNSIGNED NOT NULL DEFAULT 0,
-  `last_active_time` DATETIME NOT NULL DEFAULT 0000-00-00 00:00:00,
+  `last_active_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
   `forum_subforum_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `topic_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `topic_count_hidden` INT UNSIGNED NOT NULL DEFAULT 0,
