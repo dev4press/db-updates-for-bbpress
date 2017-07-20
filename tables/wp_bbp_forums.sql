@@ -1,3 +1,8 @@
+/* bbp_forums
+   this table includes columns based on the meta_keys saved for each forum into the wp_postmeta,
+   and it has indexes on each ID based column, forum type and status.
+*/
+
 CREATE TABLE `wp_bbp_forums` (
   `forum_id` BIGINT UNSIGNED NOT NULL COMMENT 'Connects to ID in the wp_posts table for the post_type = \'forum\'.',
   `forum_type` VARCHAR(32) NOT NULL DEFAULT 'forum' COMMENT 'forum or category',
