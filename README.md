@@ -44,6 +44,7 @@ I would like to see suggestions on how to improve the database tables and make s
 That's it for now,
 
 **Milan Petrovic**
-Website: https://www.dev4press.com/
-Twitter: https://twitter.com/milangd
-Facebook: https://www.facebook.com/dev4press
+
+* Website: https://www.dev4press.com/
+* Twitter: https://twitter.com/milangd
+* Facebook: https://www.facebook.com/dev4press
