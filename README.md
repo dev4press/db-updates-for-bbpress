@@ -8,6 +8,8 @@ The new schema is proposed to use additional table as a replacement for the use 
 
 The speed of bbPress queries that depend on the wp_postmeta joining is not critical issue for small forums, but with larger number of topics and replies, it can considerably slowdown the website for more complex queries.
 
+Without these changes, bbPress can't scale well to large forums that run complex queries or have features that need better filtering, search and other things that use complex queries.
+
 ## Which new tables are needed?
 
 This proposition currently includes 3 tables for forums, topics and replies, 2 tables for topics and forums subscriptions and 1 table for favorite topics.
@@ -29,8 +31,19 @@ There are few things that needs to be done:
 * Add install script to create database tables.
 * Create central database handling object for writing and reading from the extra tables.
 * Modify the forum maintenance code to recalculate all the data into new tables.
+* Create migration tool to guide user through the update process.
 * Replace all post meta handling functions (add, update, delete) with new code.
 * Modify all SQL queries to use new tables.
 * Modify all WP_Query based code to use new tables.
 * Update all the converters to use new database object.
 
+## What is next?
+
+I would like to see suggestions on how to improve the database tables and make sure they are future proof and that bbPress can be updated and modified to use them.
+
+That's it for now,
+
+**Milan Petrovic**
+Website: https://www.dev4press.com/
+Twitter: https://twitter.com/milangd
+Facebook: https://www.facebook.com/dev4press
