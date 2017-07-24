@@ -1,3 +1,7 @@
+/* bbp_subscribed_topics
+   this table connects user to the topic. Unique index placed on the user/topic combination.
+*/
+
 CREATE TABLE `wp_bbp_subscribed_topics` (
   `user_id` BIGINT UNSIGNED NOT NULL COMMENT 'Connects to ID in the wp_users table.',
   `topic_id` BIGINT UNSIGNED NOT NULL COMMENT 'Connects to ID in the wp_posts table for the post_type = \'topic\'.',
