@@ -1,3 +1,7 @@
+/* bbp_subscribed_forums
+   this table connects user to the forum. Unique index placed on the user/forum combination.
+*/
+
 CREATE TABLE `wp_bbp_subscribed_forums` (
   `user_id` BIGINT UNSIGNED NOT NULL COMMENT 'Connects to ID in the wp_users table.',
   `forum_id` BIGINT UNSIGNED NOT NULL COMMENT 'Connects to ID in the wp_posts table for the post_type = \'forum\'.',
