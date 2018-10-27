@@ -1,8 +1,8 @@
-/* bbp_favorite_topics
+/* bbp_favorited_topics
    this table connects user to the topic. Unique index placed on the user/topic combination.
 */
 
-CREATE TABLE `wp_bbp_favorite_topics` (
+CREATE TABLE `wp_bbp_favorited_topics` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT UNSIGNED NOT NULL COMMENT 'Connects to ID in the wp_users table.',
   `topic_id` BIGINT UNSIGNED NOT NULL COMMENT 'Connects to ID in the wp_posts table for the post_type = \'topic\'.',
