@@ -1,1 +1,1 @@
-// cooy data from usermeta table
+// copy data from usermeta table
