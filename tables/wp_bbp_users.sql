@@ -8,6 +8,7 @@ CREATE TABLE `wp_bbp_topics` (
   `last_posted` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
   `topic_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
-  INDEX `user_id` (`user_id`)
+  UNIQUE INDEX `user_id` (`user_id`),
+  INDEX `last_posted` (`last_posted`)
 )
 ENGINE = InnoDB;
