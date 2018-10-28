@@ -1,8 +1,8 @@
 INSERT INTO wp_bbp_engaged_topics (`user_id`, `topic_id`, `engaged`) (
 	SELECT 
-		posts.post_author AS user_id, 
-		postmeta.meta_value AS topic_id, 
-		posts.post_date AS engaged
+		posts.post_author, 
+		postmeta.meta_value, 
+		posts.post_date
 	FROM wp_posts AS posts
 	INNER JOIN wp_postmeta AS postmeta 
 		ON posts.ID = postmeta.post_id 
