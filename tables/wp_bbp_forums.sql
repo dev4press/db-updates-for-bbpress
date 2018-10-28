@@ -20,9 +20,9 @@ CREATE TABLE `wp_bbp_forums` (
   `total_reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
   UNIQUE INDEX `forum_id` (`forum_id`),
   INDEX `forum_type` (`forum_type`),
+  INDEX `status` (`status`),
   INDEX `last_topic_id` (`last_topic_id`),
   INDEX `last_reply_id` (`last_reply_id`),
   INDEX `last_active_id` (`last_active_id`),
-  INDEX `last_active_time` (`kast_actuve_time`),
-  INDEX `status` (`status`))
+  INDEX `last_active_time` (`last_active_time`))
 ENGINE = InnoDB;
