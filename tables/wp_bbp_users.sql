@@ -12,6 +12,9 @@ CREATE TABLE `wp_bbp_topics` (
   `topic_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
   UNIQUE INDEX `user_id` (`user_id`),
-  INDEX `last_posted` (`last_posted`)
+  INDEX `last_posted` (`last_posted`),
+  INDEX `last_active` (`last_active`),
+  INDEX `last_topic_id` (`last_topic_id`),
+  INDEX `last_reply_id` (`last_reply_id`)
 )
 ENGINE = InnoDB;
