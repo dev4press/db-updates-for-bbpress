@@ -13,9 +13,9 @@ CREATE TABLE `wp_bbp_topics` (
   `total_reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `voice_count` INT UNSIGNED NOT NULL DEFAULT 1,
   `last_active_time` DATETIME NULL DEFAULT '0000-00-00 00:00:00',
+  UNIQUE INDEX `topic_forum_id` (`topic_id`, `forum_id`),
   INDEX `topic_id` (`topic_id`),
   INDEX `forum_id` (`forum_id`),
-  UNIQUE INDEX `topic_forum_id` (`topic_id`, `forum_id`),
   INDEX `last_reply_id` (`last_reply_id`),
   INDEX `last_active_id` (`last_active_id`))
 ENGINE = InnoDB;
