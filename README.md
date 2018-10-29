@@ -16,13 +16,15 @@ This proposition currently includes 3 tables for forums, topics and replies, 2 t
 
 Tables for forums, topics and replies are made to replicate data saved into wp_postmeta table. Each column in these tables corresponds to the meta field stored in the wp_postmeta table. All ID based columns are indexed to make required joins very fast. Proper data types are used for all columns.
 
+Users table replicates user data saved into wp_usermeta table. But, this table includes few more columns for some useful data related to users, and it can be expanded even more if needed.
+
 ## How much faster queries can be?
 
-From my own preliminary testing, complex queries can be 50 times faster. This doesn't mean that bbPress will be 50 times faster, it all depends on the size of the forums, user activity and other things.
+From my own preliminary testing, complex queries can be 50 to 100 times faster. This doesn't mean that bbPress will be 50 times faster, it all depends on the size of the forums, user activity, used features and other things.
 
 My plugin [GD bbPress Toolbox Pro](https://plugins.dev4press.com/gd-bbpress-toolbox/) uses custom database tables to track read status for topics and forums, and uses one extra table with indexed ID columns. First version of the code was made with the use of wp_postmeta. On a small forum (under 1000 forums, topics and replies combined), custom table based queries were only 2 times faster then the post meta based query. But, with larger forum with up to 100000 posts, custom table based queries were 30 times faster, and with a forum with 250000 posts, queries were almost 60 times faster.
 
-Similar improvements are expected for bbPress core when transitioned to the custom database tables.
+Similar improvements are expected for bbPress core when transitioned to the custom database tables. This repository contains few examples of queries that show how faster the proper database schema is, using some practical queries.
 
 ## How much work is needed to make changes to the bbPress?
 
