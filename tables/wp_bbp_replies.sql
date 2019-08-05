@@ -10,5 +10,6 @@ CREATE TABLE `wp_bbp_replies` (
   UNIQUE INDEX `reply_topic_forum` (`reply_id`, `topic_id`, `forum_id`),
   INDEX `reply_id` (`reply_id`),
   INDEX `topic_id` (`topic_id`),
-  INDEX `forum_id` (`forum_id`))
+  INDEX `forum_id` (`forum_id`),
+  INDEX `parent_id` (`parent_id`))
 ENGINE = InnoDB;
