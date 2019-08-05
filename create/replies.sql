@@ -2,7 +2,8 @@ INSERT INTO wp_bbp_replies (`reply_id`, `topic_id`, `forum_id`) (
 	SELECT 
 	  p.ID, 
 	  CAST(t.meta_value AS UNSIGNED), 
-	  CAST(f.meta_value AS UNSIGNED)
+	  CAST(f.meta_value AS UNSIGNED),
+          p.post_parent
   FROM wp_posts p
   INNER JOIN wp_postmeta t 
 	  ON p.ID = t.post_id 
