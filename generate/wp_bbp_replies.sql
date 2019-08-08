@@ -1,3 +1,4 @@
+INSERT INTO wp_bbp_replies 
 SELECT
     r.ID AS reply_id,
     t.ID AS topic_id,
