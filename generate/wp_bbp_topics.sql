@@ -26,3 +26,12 @@ WHERE t.last_active_id = 0;
 UPDATE wp_bbp_topics t
 INNER JOIN wp_posts p ON p.ID = t.last_active_id
 SET t.last_active_time = p.post_date;
+
+/* Update reply_count */
+UPDATE wp_bbp_topics o INNER JOIN (
+    SELECT t.topic_id, COUNT(r.reply_id) AS reply_count FROM wp_bbp_topics t
+    INNER JOIN wp_bbp_replies r ON t.topic_id = r.topic_id
+    INNER JOIN wp_posts p ON p.ID = r.reply_id
+    WHERE p.post_status = 'publish'
+    GROUP BY t.topic_id) r ON r.topic_id = o.topic_id
+SET o.reply_count = r.reply_count;
