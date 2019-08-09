@@ -4,7 +4,7 @@ SELECT
     t.ID AS topic_id,
     f.ID AS forum_id
 FROM wp_posts t 
-INNER JOIN wp_posts f ON f.ID = t.post_parent AND f.post_type = 'forum'
+INNER JOIN wp_posts f ON f.ID = t.post_parent AND f.post_type = 'forum' AND f.post_status IN ('publish', 'private', 'hidden')
 WHERE t.post_type = 'topic' AND t.post_status IN ('publish', 'closed', 'pending', 'trash', 'spam'));
 
 /* Update last_reply_id, last_active_id */
@@ -32,7 +32,7 @@ UPDATE wp_bbp_topics o INNER JOIN (
     SELECT t.topic_id, COUNT(r.reply_id) AS reply_count FROM wp_bbp_topics t
     INNER JOIN wp_bbp_replies r ON t.topic_id = r.topic_id
     INNER JOIN wp_posts p ON p.ID = r.reply_id
-    WHERE p.post_status = 'publish'
+    WHERE p.post_status IN ('publish')
     GROUP BY t.topic_id) r ON r.topic_id = o.topic_id
 SET o.reply_count = r.reply_count;
 
