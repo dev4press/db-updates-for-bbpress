@@ -44,3 +44,10 @@ UPDATE wp_bbp_topics o INNER JOIN (
     WHERE p.post_status IN ('trash', 'spam', 'pedning')
     GROUP BY t.topic_id) r ON r.topic_id = o.topic_id
 SET o.reply_count_hidden = r.reply_count_hidden;
+
+/* Update voices. Engagement table must be populated before this query */
+UPDATE wp_bbp_topics t INNER JOIN (
+    SELECT topic_id, COUNT(user_id) AS voices 
+    FROM wp_bbp_engaged_topics
+    GROUP BY topic_id) e ON e.topic_id = t.topic_id
+SET t.voice_count = e.voices;
