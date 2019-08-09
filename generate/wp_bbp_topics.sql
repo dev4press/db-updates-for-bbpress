@@ -26,3 +26,8 @@ WHERE t.last_active_id = 0;
 UPDATE wp_bbp_topics t
 INNER JOIN wp_posts p ON p.ID = t.last_active_id
 SET t.last_active_time = p.post_date;
+
+/* Update last_active_time */
+UPDATE wp_bbp_forums f
+INNER JOIN wp_posts p ON p.ID = f.last_active_id
+SET f.last_active_time = p.post_date;
