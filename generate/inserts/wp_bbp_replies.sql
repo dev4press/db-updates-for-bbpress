@@ -1,4 +1,4 @@
-/* Insert initial data */
+/* Insert initial reply/topic/forum combinations */
 INSERT INTO wp_bbp_replies 
 SELECT
     r.ID AS reply_id,
