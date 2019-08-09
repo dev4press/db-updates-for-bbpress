@@ -1,3 +1,4 @@
+/* Populate engaged topics table */
 INSERT INTO wp_bbp_engaged_topics
         SELECT p.post_author, t.topic_id 
         FROM wp_bbp_topics t 
