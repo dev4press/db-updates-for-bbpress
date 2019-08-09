@@ -12,7 +12,6 @@ CREATE TABLE `wp_bbp_topics` (
   `last_active_time` DATETIME NULL DEFAULT '0000-00-00 00:00:00',
   `reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `reply_count_hidden` INT UNSIGNED NOT NULL DEFAULT 0,
-  `total_reply_count` INT UNSIGNED NOT NULL DEFAULT 0,
   `voice_count` INT UNSIGNED NOT NULL DEFAULT 1,
   UNIQUE INDEX `topic_forum_id` (`topic_id`, `forum_id`),
   INDEX `sticky` (`sticky`),
