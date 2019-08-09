@@ -5,4 +5,4 @@ INSERT INTO wp_bbp_engaged_topics
     UNION
         SELECT p.post_author, r.topic_id 
         FROM wp_bbp_replies r 
-        INNER JOIN wp_posts p ON p.ID = r.reply_id AND p.post_status = 'publish';
+        INNER JOIN wp_posts p ON p.ID = r.reply_id AND p.post_status IN ('publish');
