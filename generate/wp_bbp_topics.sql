@@ -5,7 +5,7 @@ SELECT
     f.ID AS forum_id
 FROM wp_posts t 
 INNER JOIN wp_posts f ON f.ID = t.post_parent AND f.post_type = 'forum'
-WHERE t.post_type = 'topic');
+WHERE t.post_type = 'topic' AND t.post_status IN ('publish', 'closed', 'private', 'trash', 'spam', 'private', 'hidden'));
 
 /* Update last_reply_id, last_active_id */
 UPDATE wp_bbp_topics t
@@ -26,4 +26,3 @@ WHERE t.last_active_id = 0;
 UPDATE wp_bbp_topics t
 INNER JOIN wp_posts p ON p.ID = t.last_active_id
 SET t.last_active_time = p.post_date;
-
