@@ -4,7 +4,7 @@ SELECT
     p.post_author AS user_id,
     IF (r.first_reply_date IS NULL || t.first_topic_date <= r.last_reply_date, t.first_topic_date, r.first_reply_date) AS first_posted,
     IF (r.last_reply_date IS NULL || t.last_topic_date >= r.last_reply_date, t.last_topic_date, r.last_reply_date) AS last_posted,
-    IF (u.last_active IS NULL, '0000-00-00 00:00:00', FROM_UNIXTIME(u.last_active, '%Y-%d-%m %H:%i:%s')) AS last_active,
+    IF (u.last_active IS NULL, '0000-00-00 00:00:00', FROM_UNIXTIME(u.last_active, '%Y-%m-%d %H:%i:%s')) AS last_active,
     IF (t.topic_count IS NULL, 0, t.topic_count) AS topic_count,
     IF (r.reply_count IS NULL, 0, r.reply_count) AS reply_count
 FROM (SELECT DISTINCT post_author 
