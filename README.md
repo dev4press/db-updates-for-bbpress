@@ -39,12 +39,6 @@ There are few things that needs to be done:
 * Modify all WP_Query based code to use new tables.
 * Update all the converters to use new database object.
 
-## Special Consideration
-
-There are few things that can be a problem when converting data.
-
-* For each forum/topic/reply bbPress related meta keys have to be unique.
-
 ## What is next?
 
 I would like to see suggestions on how to improve the database tables and make sure they are future proof and that bbPress can be updated and modified to use them.
