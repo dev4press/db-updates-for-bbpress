@@ -6,18 +6,20 @@ UPDATE wp_bbp_forums o LEFT JOIN (
     GROUP BY f.forum_id) r ON o.forum_id = r.forum_id
 SET o.subforum_count = r.subforums;
 
-/* Update last_topic_id, basic pass
-   Maybe add join to posts for the topic status check */
+/* Update last_topic_id, basic pass */
 UPDATE wp_bbp_forums f LEFT JOIN (
-    SELECT forum_id, MAX(topic_id) AS topic_id FROM wp_bbp_topics
-    GROUP BY forum_id) t ON t.forum_id = f.forum_id
+    SELECT t.forum_id, MAX(t.topic_id) AS topic_id 
+    FROM wp_bbp_topics t
+    INNER JOIN wp_posts p ON p.ID = t.topic_id AND p.post_status IN ('publish', 'closed')
+    GROUP BY t.forum_id) t ON t.forum_id = f.forum_id
 SET f.last_topic_id = t.topic_id;
 
-/* Update last_reply_id, basic pass
-   Maybe add join to posts for the reply status check */
+/* Update last_reply_id, basic pass */
 UPDATE wp_bbp_forums f LEFT JOIN (
-    SELECT forum_id, MAX(reply_id) AS reply_id FROM wp_bbp_replies
-    GROUP BY forum_id) r ON r.forum_id = f.forum_id
+    SELECT t.forum_id, MAX(t.reply_id) AS reply_id 
+    FROM wp_bbp_replies t
+    INNER JOIN wp_posts p ON p.ID = t.reply_id AND p.post_status IN ('publish')
+    GROUP BY t.forum_id) r ON r.forum_id = f.forum_id
 SET f.last_reply_id = r.reply_id;
 
 /* Update last_topic_id, inner pass, might need to be repeated more than once */
