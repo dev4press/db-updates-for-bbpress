@@ -10,6 +10,7 @@ SET o.subforum_count = r.subforums;
 UPDATE wp_bbp_forums f LEFT JOIN (
     SELECT t.forum_id, MAX(t.topic_id) AS topic_id 
     FROM wp_bbp_topics t
+    INNER JOIN wp_bbp_forums f ON f.forum_id = t.forum_id AND f.forum_type = 'forum'
     INNER JOIN wp_posts p ON p.ID = t.topic_id AND p.post_status IN ('publish', 'closed')
     GROUP BY t.forum_id) t ON t.forum_id = f.forum_id
 SET f.last_topic_id = t.topic_id;
@@ -18,6 +19,7 @@ SET f.last_topic_id = t.topic_id;
 UPDATE wp_bbp_forums f LEFT JOIN (
     SELECT t.forum_id, MAX(t.reply_id) AS reply_id 
     FROM wp_bbp_replies t
+    INNER JOIN wp_bbp_forums f ON f.forum_id = t.forum_id AND f.forum_type = 'forum'
     INNER JOIN wp_posts p ON p.ID = t.reply_id AND p.post_status IN ('publish')
     GROUP BY t.forum_id) r ON r.forum_id = f.forum_id
 SET f.last_reply_id = r.reply_id;
