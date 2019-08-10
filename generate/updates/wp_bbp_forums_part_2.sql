@@ -1,4 +1,3 @@
-
 /* Update last_active_id */
 UPDATE wp_bbp_forums f 
 SET f.last_active_id = GREATEST(last_topic_id, last_reply_id);
