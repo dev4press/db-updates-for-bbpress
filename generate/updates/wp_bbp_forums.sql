@@ -23,3 +23,21 @@ UPDATE wp_bbp_forums f INNER JOIN (
     INNER JOIN wp_posts p ON p.ID = t.reply_id AND p.post_status IN ('publish')
     GROUP BY t.forum_id) r ON r.forum_id = f.forum_id
 SET f.last_reply_id = r.reply_id, f.reply_count = r.reply_count;
+
+/* Update topic_count_hidden */
+UPDATE wp_bbp_forums f INNER JOIN (
+    SELECT t.forum_id, COUNT(t.topic_id) AS topic_count_hidden
+    FROM wp_bbp_topics t
+    INNER JOIN wp_bbp_forums f ON f.forum_id = t.forum_id AND f.forum_type = 'forum'
+    INNER JOIN wp_posts p ON p.ID = t.topic_id AND p.post_status IN ('pending', 'trash', 'spam')
+    GROUP BY t.forum_id) t ON t.forum_id = f.forum_id
+SET f.topic_count_hidden = t.topic_count_hidden;
+    
+/* Update reply_count_hidden */
+UPDATE wp_bbp_forums f INNER JOIN (
+    SELECT t.forum_id, COUNT(t.reply_id) AS reply_count_hidden
+    FROM wp_bbp_replies t
+    INNER JOIN wp_bbp_forums f ON f.forum_id = t.forum_id AND f.forum_type = 'forum'
+    INNER JOIN wp_posts p ON p.ID = t.reply_id AND p.post_status IN ('pending', 'trash', 'spam')
+    GROUP BY t.forum_id) r ON r.forum_id = f.forum_id
+SET f.reply_count_hidden = r.reply_count_hidden;
