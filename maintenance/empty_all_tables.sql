@@ -6,3 +6,4 @@ TRUNCATE `wp_bbp_subscribed_forums`;
 TRUNCATE `wp_bbp_subscribed_topics`;
 TRUNCATE `wp_bbp_topics`;
 TRUNCATE `wp_bbp_users`;
+TRUNCATE `wp_bbp_users_roles`;
